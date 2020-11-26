@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { v4 as uuid4 } from "uuid";
+import styles from "./ContactForm.module.css";
 
 const INITIAL_STATE = {
   name: "",
@@ -17,7 +18,7 @@ export default class ContactForm extends Component {
   };
   handleSubmit = (event) => {
     event.preventDefault();
-    const { name } = this.state;
+    // const { name } = this.state;
     // console.log(`      name: ${name}    `);
     this.props.addContact({ ...this.state });
   };
@@ -26,14 +27,32 @@ export default class ContactForm extends Component {
     const { name, number } = this.state;
     return (
       <div>
-        <form action="" onSubmit={this.handleSubmit}>
-          <label htmlFor="name"> Name</label>
-          <input type="text" name="name" value={name} placeholder="name" onChange={this.handleChange} />
-
-          <label htmlFor="number"> Number</label>
-          <input type="tel" name="number" value={number} placeholder="number" onChange={this.handleChange} />
-
-          <input type="submit" value="Add contuct" />
+        <form className={styles.form} action="" onSubmit={this.handleSubmit}>
+          <label className={styles.label} htmlFor="name">
+            {" "}
+            Name
+            <input
+              className={styles.input}
+              type="text"
+              name="name"
+              value={name}
+              placeholder="name"
+              onChange={this.handleChange}
+            />
+          </label>
+          <label className={styles.label} htmlFor="number">
+            {" "}
+            Number
+            <input
+              className={styles.input}
+              type="tel"
+              name="number"
+              value={number}
+              placeholder="number"
+              onChange={this.handleChange}
+            />
+          </label>
+          <input className={styles.inputBtn} type="submit" value="Add contuct" />
         </form>
       </div>
     );
