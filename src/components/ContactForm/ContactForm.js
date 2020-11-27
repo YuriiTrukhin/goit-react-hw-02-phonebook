@@ -18,9 +18,11 @@ export default class ContactForm extends Component {
   };
   handleSubmit = (event) => {
     event.preventDefault();
-    // const { name } = this.state;
-    // console.log(`      name: ${name}    `);
     this.props.addContact({ ...this.state });
+    this.setState({
+      name: "",
+      number: "",
+    });
   };
 
   render() {
